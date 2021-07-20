@@ -2,29 +2,35 @@ package prj01Cat;
 
 public class Cat
 {
+    public static int count;
+    public static final double MIN_WEIGHT = 1000;
+    public static final double MAX_WEIGHT = 9000;
+    public static final int eyes = 4;
+
     private double originWeight;
     private double weight;
 
-    private double minWeight;
-    private double maxWeight;
-
     private double foodEaten;
+    private boolean flagDeath;
+    private Color color;
 
-    public static int count;
-
-    public Cat()
+    public Cat(Color color)
     {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
         foodEaten = 0.0;
+        flagDeath = false;
+        this.color = color;
         count++;
     }
 
     public static int getCount()
     {
         return count;
+    }
+
+    public Color getColor(){
+        return color;
     }
 
     public void meow()
@@ -75,12 +81,10 @@ public class Cat
 
     public String getStatus()
     {
-        if(weight < minWeight) {
-            count--;
+        if(weight <MIN_WEIGHT) {
             return "Dead";
         }
-        else if(weight > maxWeight) {
-            count--;
+        else if(weight > MAX_WEIGHT) {
             return "Exploded";
         }
         else if(weight > originWeight) {
@@ -94,6 +98,10 @@ public class Cat
     public boolean isAlive()
     {
         if(this.getStatus().equals("Dead") || this.getStatus().equals("Exploded")){
+            if(!flagDeath){
+                flagDeath = true;
+                count--;
+            }
             return false;
         } else {
             return true;
