@@ -10,6 +10,8 @@ public class Cat
 
     private double foodEaten;
 
+    public static int count;
+
     public Cat()
     {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -17,29 +19,51 @@ public class Cat
         minWeight = 1000.0;
         maxWeight = 9000.0;
         foodEaten = 0.0;
+        count++;
+    }
+
+    public static int getCount()
+    {
+        return count;
     }
 
     public void meow()
     {
-        weight = weight - 1;
-        System.out.println("Meow");
+        if(isAlive()) {
+            weight = weight - 1;
+            System.out.print("Meow ");
+        } else {
+            System.out.println("Cat cannot meow - " + getStatus());
+        }
     }
 
     public void feed(Double amount)
     {
-        weight = weight + amount;
-        foodEaten = foodEaten + amount;
+        if(isAlive()) {
+            weight = weight + amount;
+            foodEaten = foodEaten + amount;
+        }else{
+            System.out.println("Cat cannot eat - " + getStatus());
+        }
     }
 
     public void drink(Double amount)
     {
-        weight = weight + amount;
+        if(isAlive()) {
+            weight = weight + amount;
+        } else {
+            System.out.println("Cat cannot drink - " + getStatus());
+        }
     }
 
     public void pee()
     {
-        weight = weight - 0.5; //had the toilet
-        System.out.println("mmm...the cat went to the toilet.");
+        if(isAlive()) {
+            weight = weight - 0.5; //had the toilet
+            System.out.println("mmm...the cat went to the toilet.");
+        } else {
+            System.out.println("Cat cannot pee - " + getStatus());
+        }
     }
 
     public double getFoodEaten(){ return foodEaten; }
@@ -52,9 +76,11 @@ public class Cat
     public String getStatus()
     {
         if(weight < minWeight) {
+            count--;
             return "Dead";
         }
         else if(weight > maxWeight) {
+            count--;
             return "Exploded";
         }
         else if(weight > originWeight) {
@@ -62,6 +88,15 @@ public class Cat
         }
         else {
             return "Playing";
+        }
+    }
+
+    public boolean isAlive()
+    {
+        if(this.getStatus().equals("Dead") || this.getStatus().equals("Exploded")){
+            return false;
+        } else {
+            return true;
         }
     }
 }
