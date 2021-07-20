@@ -3,9 +3,9 @@ package prj01Cat;
 public class Loader {
     public static void main(String[] args) {
 
-        Cat cat1 = new Cat(Color.WHITE);
-        Cat cat2 = new Cat(Color.RED);
-        Cat cat3 = new Cat(Color.BLACK);
+        Cat cat1 = new Cat(Color.BROWN, 1750.0);
+        Cat cat2 = new Cat(Color.RED, 1230.0);
+        Cat cat3 = new Cat(Color.BLACK, 1057.0);
 
         System.out.println("Count cats : " + Cat.getCount());
 
@@ -53,5 +53,15 @@ public class Loader {
 
         System.out.println("Count cats : " + Cat.getCount());
 
+        Cat kitten1 = getKitten(Color.WHITE);
+        Cat kitten2 = getKitten(Color.GRAY);
+        Cat kitten3 = getKitten(Color.RED);
+        System.out.println("Kitten 1: " + kitten1.getColor() + " " + kitten1.getWeight() + " " + kitten1.getStatus() + " " + kitten1.getOriginWeight());
+        System.out.println("Kitten 2: " + kitten2.getColor() + " " + kitten2.getWeight() + " " + kitten2.getStatus() + " " + kitten2.getOriginWeight());
+        System.out.println("Kitten 3: " + kitten3.getColor() + " " + kitten3.getWeight() + " " + kitten3.getStatus() + " " + kitten3.getOriginWeight());
+
+    }
+    public static Cat getKitten(Color color){
+        return new Cat(color, 1100.0);
     }
 }

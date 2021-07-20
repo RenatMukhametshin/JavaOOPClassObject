@@ -14,14 +14,20 @@ public class Cat
     private boolean flagDeath;
     private Color color;
 
-    public Cat(Color color)
+    public Cat()
     {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
         foodEaten = 0.0;
         flagDeath = false;
-        this.color = color;
         count++;
+    }
+
+    public Cat(Color color, double weight){
+        this();
+        this.weight = weight;
+        originWeight = weight;
+        this.color = color;
     }
 
     public static int getCount()
@@ -77,6 +83,11 @@ public class Cat
     public Double getWeight()
     {
         return weight;
+    }
+
+    public double getOriginWeight()
+    {
+        return originWeight;
     }
 
     public String getStatus()
