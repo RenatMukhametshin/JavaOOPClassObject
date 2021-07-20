@@ -57,6 +57,8 @@ public class Loader {
         Cat kitten2 = getKitten(Color.GRAY);
         Cat kitten3 = getKitten(Color.RED);
         System.out.println("Kitten 1: " + kitten1.getColor() + " " + kitten1.getWeight() + " " + kitten1.getStatus() + " " + kitten1.getOriginWeight());
+        kitten1.setColor(Color.BLACK);
+        System.out.println("Kitten 1: " + kitten1.getColor() + " " + kitten1.getWeight() + " " + kitten1.getStatus() + " " + kitten1.getOriginWeight());
         System.out.println("Kitten 2: " + kitten2.getColor() + " " + kitten2.getWeight() + " " + kitten2.getStatus() + " " + kitten2.getOriginWeight());
         System.out.println("Kitten 3: " + kitten3.getColor() + " " + kitten3.getWeight() + " " + kitten3.getStatus() + " " + kitten3.getOriginWeight());
 

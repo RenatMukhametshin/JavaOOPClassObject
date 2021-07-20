@@ -39,6 +39,10 @@ public class Cat
         return color;
     }
 
+    public void setColor(Color color){
+        this.color = color;
+    }
+
     public void meow()
     {
         if(isAlive()) {
