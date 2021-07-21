@@ -62,6 +62,25 @@ public class Loader {
         System.out.println("Kitten 2: " + kitten2.getColor() + " " + kitten2.getWeight() + " " + kitten2.getStatus() + " " + kitten2.getOriginWeight());
         System.out.println("Kitten 3: " + kitten3.getColor() + " " + kitten3.getWeight() + " " + kitten3.getStatus() + " " + kitten3.getOriginWeight());
 
+        System.out.println();
+        System.out.println("Test copy objects");
+        Cat cat10 = new Cat(Color.RED, 1300);
+        cat10.setName("Maxik");
+        System.out.println(cat10);
+        Cat cat10Copy = cat10.getCopyCat();
+        cat10Copy.setName("Maxik copy");
+        System.out.println(cat10Copy);
+        System.out.println("set Black color to cat 10");
+        cat10.setColor(Color.BLACK);
+        System.out.println(cat10);
+        System.out.println(cat10Copy);
+
+        System.out.println(cat1);
+        Cat cat1Copy = cat1.getCopyCat();
+        System.out.println(cat1Copy);
+
+
+
     }
     public static Cat getKitten(Color color){
         return new Cat(color, 1100.0);

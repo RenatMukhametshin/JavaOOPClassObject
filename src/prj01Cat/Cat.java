@@ -7,6 +7,8 @@ public class Cat
     public static final double MAX_WEIGHT = 9000;
     public static final int eyes = 4;
 
+    private String name;
+
     private double originWeight;
     private double weight;
 
@@ -20,6 +22,7 @@ public class Cat
         originWeight = weight;
         foodEaten = 0.0;
         flagDeath = false;
+        name = "murka";
         count++;
     }
 
@@ -28,6 +31,37 @@ public class Cat
         this.weight = weight;
         originWeight = weight;
         this.color = color;
+    }
+
+    public Cat getCopyCat(){
+        Cat copy = new Cat();
+        copy.setFlagDeath(this.isFlagDeath());
+        copy.setName(this.getName());
+        copy.setFoodEaten(this.getFoodEaten());
+        copy.setWeight(this.getWeight());
+        copy.setOriginWeight(this.getOriginWeight());
+        copy.setColor(this.getColor());
+        return copy;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOriginWeight(double originWeight) {
+        this.originWeight = originWeight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setFoodEaten(double foodEaten) {
+        this.foodEaten = foodEaten;
+    }
+
+    public void setFlagDeath(boolean flagDeath) {
+        this.flagDeath = flagDeath;
     }
 
     public static int getCount()
@@ -89,6 +123,14 @@ public class Cat
         return weight;
     }
 
+    public boolean isFlagDeath() {
+        return flagDeath;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public double getOriginWeight()
     {
         return originWeight;
@@ -121,5 +163,17 @@ public class Cat
         } else {
             return true;
         }
+    }
+
+    @Override
+    public String toString() {
+        String catToStr = "";
+        catToStr += "name = " + this.getName();
+        catToStr += " / weight = " + this.getWeight();
+        catToStr += " / originWeight = " + this.getOriginWeight();
+        catToStr += " / flagDeath = " + this.isFlagDeath();
+        catToStr += "/ foodEaten = " + this.getFoodEaten();
+        catToStr += "/ color = " + this.getColor();
+        return catToStr;
     }
 }
